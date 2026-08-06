@@ -1,0 +1,39 @@
+name: 更新热播片单
+
+on:
+  schedule:
+    # 每 6 小时跑一次（UTC）。GitHub 的定时任务在高峰期可能延迟几分钟，属正常现象。
+    - cron: '17 */6 * * *'
+  workflow_dispatch: # 支持在 Actions 页面手动触发
+
+permissions:
+  contents: write # 需要写权限才能把 hot.json 提交回仓库
+
+concurrency:
+  group: update-hot
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 抓取主站热门片单
+        run: node scripts/fetch-hot.mjs
+
+      - name: 有变化才提交
+        run: |
+          if [[ -z "$(git status --porcelain hot.json)" ]]; then
+            echo "hot.json 无变化，跳过提交"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add hot.json
+          git commit -m "chore: 更新热播片单"
+          git push

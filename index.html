@@ -1,26 +1,1364 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蜗牛看看 - 官方最新发布页 - 请截图保存</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>蜗牛看看 · 地址发布</title>
+    <meta name="description" content="蜗牛看看官方地址发布页。获取最新可用域名与主站入口，高清电影、电视剧、动漫、综艺、短剧、体育免费在线观看。" />
+    <meta name="keywords" content="蜗牛看看, 蜗牛看看地址, 蜗牛看看最新网址, 蜗牛看看发布页, 免费影视" />
+    <meta name="theme-color" content="#0b120e" />
+    <link rel="canonical" href="https://woniukankan.github.io" />
+    <link rel="icon" href="./logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="蜗牛看看 · 地址发布" />
+    <meta property="og:description" content="蜗牛看看官方地址发布页，同步最新可用域名。" />
+    <meta property="og:url" content="https://woniukankan.github.io" />
+    <meta property="og:image" content="https://woniukankan.github.io/logo.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "蜗牛看看地址发布",
+      "url": "https://woniukankan.github.io",
+      "description": "蜗牛看看官方地址发布页",
+      "inLanguage": "zh-CN",
+      "image": "https://woniukankan.github.io/logo.png"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "蜗牛看看",
+      "url": "https://woniukankan.com",
+      "logo": "https://woniukankan.github.io/logo.png"
+    }
+    </script>
+
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f4f4f9; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        .link-btn { display: block; padding: 15px; margin: 15px 0; background: #2ecc71; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .link-btn:hover { background: #28a745; }
-        .tip { color: #666; font-size: 14px; margin-top: 20px; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b120e;
+            --surface: rgba(23, 34, 27, 0.72);
+            --surface-solid: #16211a;
+            --surface-2: #1d2b23;
+            --line: rgba(255, 255, 255, 0.08);
+            --line-strong: rgba(63, 196, 124, 0.32);
+            --text: #e8f2ec;
+            --text-dim: #8ea497;
+            --accent: #3fc47c;
+            --accent-hover: #58d894;
+            --accent-deep: #1c9c5c;
+            --radius: 14px;
+            --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            --mono: "SF Mono", "Cascadia Code", "Menlo", monospace;
+            --shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.9);
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ---------- 背景：极光光斑 + 扫描线 ---------- */
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background:
+                radial-gradient(1100px 620px at 50% -10%, rgba(63, 196, 124, 0.16), transparent 62%),
+                linear-gradient(180deg, #0d1611 0%, #0b120e 45%, #090f0c 100%);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            will-change: transform;
+        }
+
+        .b1 {
+            width: 420px;
+            height: 420px;
+            left: -120px;
+            top: 40px;
+            background: rgba(63, 196, 124, 0.35);
+            animation: drift1 22s ease-in-out infinite alternate;
+        }
+
+        .b2 {
+            width: 380px;
+            height: 380px;
+            right: -110px;
+            top: 220px;
+            background: rgba(28, 156, 92, 0.32);
+            animation: drift2 27s ease-in-out infinite alternate;
+        }
+
+        .b3 {
+            width: 460px;
+            height: 460px;
+            left: 30%;
+            bottom: -180px;
+            background: rgba(46, 130, 200, 0.18);
+            animation: drift3 31s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift1 {
+            to {
+                transform: translate3d(120px, 60px, 0) scale(1.15);
+            }
+        }
+
+        @keyframes drift2 {
+            to {
+                transform: translate3d(-90px, 120px, 0) scale(1.1);
+            }
+        }
+
+        @keyframes drift3 {
+            to {
+                transform: translate3d(80px, -90px, 0) scale(0.9);
+            }
+        }
+
+        .scanlines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 3px);
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 44px 28px 80px;
+        }
+
+        /* ---------- 顶栏 ---------- */
+        .top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .logo-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-wrap img {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-wrap::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 16px;
+            background: radial-gradient(circle, rgba(63, 196, 124, 0.55), transparent 70%);
+            animation: halo 3.6s ease-in-out infinite;
+        }
+
+        @keyframes halo {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(0.94);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.06);
+            }
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand p {
+            margin: 1px 0 0;
+            font-size: 13.5px;
+            color: var(--text-dim);
+        }
+
+        .live {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            color: var(--accent);
+            border: 1px solid var(--line-strong);
+            background: rgba(63, 196, 124, 0.08);
+            border-radius: 999px;
+            padding: 5px 12px;
+            white-space: nowrap;
+        }
+
+        .live i {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 0 rgba(63, 196, 124, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(63, 196, 124, 0.55);
+            }
+
+            70% {
+                box-shadow: 0 0 0 9px rgba(63, 196, 124, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(63, 196, 124, 0);
+            }
+        }
+
+        /* ---------- 通用面板 ---------- */
+        .panel {
+            position: relative;
+            background: var(--surface);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 30px 30px 26px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .panel-label {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin: 0 0 14px;
+        }
+
+        /* ---------- 主视觉 ---------- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(32px, 4vw, 48px) clamp(24px, 3.4vw, 44px) clamp(28px, 3vw, 36px);
+            border-color: var(--line-strong);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(420px 220px at var(--mx, 30%) var(--my, 0%), rgba(63, 196, 124, 0.18), transparent 70%);
+            transition: background 0.25s ease-out;
+            pointer-events: none;
+        }
+
+        .hero>* {
+            position: relative;
+        }
+
+        .eyebrow {
+            margin: 0;
+            font-size: 12px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .hero h2 {
+            margin: 10px 0 8px;
+            font-size: clamp(28px, 4.4vw, 46px);
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            background: linear-gradient(96deg, #ffffff 10%, var(--accent-hover) 55%, #ffffff 90%);
+            background-size: 220% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: sheen 7s linear infinite;
+        }
+
+        @keyframes sheen {
+            to {
+                background-position: -220% 0;
+            }
+        }
+
+        .hero .sub {
+            margin: 0 0 26px;
+            font-size: clamp(14px, 1.5vw, 16px);
+            color: var(--text-dim);
+        }
+
+        .url-row {
+            display: flex;
+            gap: 9px;
+            align-items: stretch;
+        }
+
+        .url-box {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            background: rgba(9, 15, 12, 0.66);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 18px 20px;
+            font-family: var(--mono);
+            font-size: clamp(15px, 1.9vw, 19px);
+            word-break: break-all;
+            line-height: 1.4;
+            overflow: hidden;
+        }
+
+        .url-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(63, 196, 124, 0.14), transparent);
+            animation: sweep 5s ease-in-out infinite;
+        }
+
+        @keyframes sweep {
+            0% {
+                left: -60%;
+            }
+
+            55%,
+            100% {
+                left: 130%;
+            }
+        }
+
+        .url-box a {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .url-box a:hover {
+            color: var(--accent-hover);
+        }
+
+        .btn {
+            appearance: none;
+            border: none;
+            border-radius: 10px;
+            padding: 0 18px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, color 0.16s;
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(0.99);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-deep));
+            color: #06180e;
+            box-shadow: 0 8px 22px -12px rgba(63, 196, 124, 0.9);
+        }
+
+        .btn-primary:hover {
+            color: #06180e;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -12px rgba(63, 196, 124, 0.95);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.65;
+            cursor: default;
+            transform: none;
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.045);
+            color: var(--text);
+            border: 1px solid var(--line);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(63, 196, 124, 0.12);
+            border-color: var(--line-strong);
+            color: var(--text);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost.copied {
+            color: var(--accent);
+            border-color: var(--line-strong);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 16px;
+        }
+
+        .actions .btn {
+            padding: 13px 26px;
+            font-size: 15px;
+        }
+
+        .meta-line {
+            margin: 18px 0 0;
+            font-size: 13.5px;
+            color: var(--text-dim);
+        }
+
+        .meta-line time {
+            color: var(--text);
+        }
+
+        /* ---------- 热播跑马灯 ---------- */
+        .ticker {
+            position: relative;
+            margin: 0 0 18px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: rgba(9, 15, 12, 0.5);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-tag {
+            flex-shrink: 0;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #06180e;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-deep));
+            padding: 12px 16px;
+            z-index: 2;
+        }
+
+        .ticker-view {
+            overflow: hidden;
+            flex: 1;
+            mask-image: linear-gradient(90deg, transparent, #000 24px, #000 88%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 88%, transparent);
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 26px;
+            white-space: nowrap;
+            padding: 12px 0 12px 24px;
+            font-size: 14.5px;
+            color: var(--text-dim);
+            width: max-content;
+        }
+
+        .ticker.ready .ticker-track {
+            animation: marquee 34s linear infinite;
+        }
+
+        .ticker:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        .ticker-track span::before {
+            content: "▸ ";
+            color: var(--accent);
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ---------- 发布页 ---------- */
+        .release-panel {
+            border-color: var(--line-strong);
+            background:
+                linear-gradient(150deg, rgba(31, 52, 40, 0.8), rgba(19, 30, 24, 0.78));
+        }
+
+        .release-panel .panel-label {
+            color: var(--accent);
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .release-panel p {
+            margin: 0 0 12px;
+            font-size: 13.5px;
+            color: var(--text-dim);
+        }
+
+        .release-url {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 14.5px;
+            background: rgba(0, 0, 0, 0.28);
+            padding: 10px 10px 10px 16px;
+            border-radius: 8px;
+            border: 1px dashed var(--line);
+            word-break: break-all;
+            transition: border-color 0.18s, transform 0.18s;
+        }
+
+        .release-url a {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .btn-mini {
+            flex-shrink: 0;
+            font-family: var(--font);
+            font-size: 13px;
+            padding: 7px 14px;
+            border-radius: 8px;
+        }
+
+        .release-url+.release-url {
+            margin-top: 8px;
+        }
+
+        .release-url:hover {
+            border-color: var(--line-strong);
+            transform: translateX(3px);
+        }
+
+        .release-url a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .release-url a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ---------- 抽片小游戏 ---------- */
+        .game-panel {
+            border-color: var(--line-strong);
+            overflow: hidden;
+        }
+
+        .game-panel .panel-label {
+            color: var(--accent);
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slot {
+            position: relative;
+            border-radius: 12px;
+            padding: clamp(30px, 4vw, 46px) 20px;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(120% 90% at 50% 0%, rgba(63, 196, 124, 0.14), transparent 60%),
+                rgba(9, 15, 12, 0.6);
+            border: 1px solid var(--line);
+        }
+
+        /* 胶片齿孔 */
+        .slot::before,
+        .slot::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0 2.5px, transparent 3px);
+            background-size: 16px 10px;
+            opacity: 0.75;
+        }
+
+        .slot::before {
+            top: 6px;
+        }
+
+        .slot::after {
+            bottom: 6px;
+        }
+
+        .slot-cat {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            min-height: 18px;
+        }
+
+        .game-actions {
+            position: relative;
+            z-index: 1;
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        .slot-title {
+            margin-top: 10px;
+            font-size: clamp(26px, 3.4vw, 38px);
+            font-weight: 800;
+            line-height: 1.3;
+            word-break: break-all;
+        }
+
+        .slot.rolling .slot-title {
+            color: var(--text-dim);
+            animation: flick 0.11s linear infinite;
+        }
+
+        .slot.rolling .slot-cat {
+            opacity: 0.45;
+        }
+
+        .slot.hit .slot-title {
+            animation: pop 0.42s cubic-bezier(0.2, 1.5, 0.35, 1);
+            text-shadow: 0 0 22px rgba(63, 196, 124, 0.5);
+        }
+
+        @keyframes flick {
+            0% {
+                transform: translateY(-3px);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(3px);
+                opacity: 0.95;
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.86);
+                opacity: 0.35;
+            }
+
+            60% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .spark {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-hover);
+            pointer-events: none;
+            animation: spark 0.75s ease-out forwards;
+        }
+
+        @keyframes spark {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--dx), var(--dy)) scale(0.2);
+                opacity: 0;
+            }
+        }
+
+        /* ---------- 分类海报 ---------- */
+        .cats {
+            margin-top: 44px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: 19px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-head h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 3px;
+            bottom: 3px;
+            width: 3px;
+            border-radius: 2px;
+            background: linear-gradient(180deg, var(--accent-hover), var(--accent-deep));
+        }
+
+        .section-head .hint {
+            margin: 0;
+            font-size: 13.5px;
+            color: var(--text-dim);
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .cat-grid a {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 20px 19px;
+            transition: transform 0.22s ease, border-color 0.22s, box-shadow 0.22s, background 0.22s;
+        }
+
+        .cat-grid a::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-hover), var(--accent-deep));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.24s ease;
+        }
+
+        .cat-grid a:hover {
+            transform: translateY(-4px);
+            border-color: var(--line-strong);
+            background: rgba(63, 196, 124, 0.07);
+            box-shadow: 0 16px 30px -18px rgba(63, 196, 124, 0.8);
+        }
+
+        .cat-grid a:hover::before {
+            transform: scaleY(1);
+        }
+
+        .cat-grid .name {
+            display: block;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            transition: transform 0.22s ease, color 0.22s;
+        }
+
+        .cat-grid .desc {
+            display: block;
+            margin-top: 4px;
+            font-size: 12.5px;
+            color: var(--text-dim);
+            transition: transform 0.22s ease;
+        }
+
+        .cat-grid a:hover .name {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .cat-grid a:hover .desc {
+            transform: translateX(4px);
+        }
+
+        footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .links {
+            margin-top: 10px;
+        }
+
+        .links a {
+            margin: 0 8px;
+        }
+
+        /* ---------- 入场动画 ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 560px) {
+            .hero h2 {
+                font-size: 24px;
+            }
+
+            .url-row {
+                flex-direction: column;
+            }
+
+            .url-row .btn {
+                padding: 12px;
+            }
+
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .live {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .blob,
+            .logo-wrap::after,
+            .live i,
+            .hero h2,
+            .url-box::after,
+            .ticker.ready .ticker-track,
+            .slot.rolling .slot-title,
+            .slot.hit .slot-title,
+            .spark {
+                animation: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>蜗牛看看 - 官方永久发布页</h1>
-        <p>请Ctrl+D收藏本页，防止失联！</p>
-        
-        <a href="https://woniukankan.com" target="_blank" class="link-btn">👉 官网 woniukankan.com</a>
-        
-        <p class="tip">提示：如果网址无法打开，请刷新本发布页获取最新链接。</p>
+    <div class="backdrop" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+        <div class="scanlines"></div>
     </div>
+
+    <div class="page">
+        <header class="top">
+            <div class="logo-wrap">
+                <img src="./logo.png" width="46" height="46" alt="蜗牛看看" />
+            </div>
+            <div class="brand">
+                <h1>蜗牛看看</h1>
+                <p>官方入口 · 地址同步</p>
+            </div>
+            <span class="live"><i></i>线路正常</span>
+        </header>
+
+        <section class="panel hero reveal" id="hero" aria-labelledby="hero-title">
+            <p class="eyebrow">最新官网</p>
+            <h2 id="hero-title">蜗牛看看，快快更，慢慢看</h2>
+            <p class="sub">电影 / 电视剧 / 动漫 / 综艺 / 短剧 / 体育 —— 极速更新，无广告打扰。</p>
+
+            <div class="url-row">
+                <div class="url-box">
+                    <a href="https://woniukankan.com" rel="noopener">https://woniukankan.com</a>
+                </div>
+                <button type="button" class="btn btn-ghost" id="copy-btn"
+                    data-copy="https://woniukankan.com">复制地址</button>
+            </div>
+
+            <div class="actions">
+                <a class="btn btn-primary" href="https://woniukankan.com" rel="noopener">▶ 打开主站</a>
+                <a class="btn btn-ghost" href="https://woniukankan.com/home/movie" rel="noopener">看电影</a>
+                <a class="btn btn-ghost" href="https://woniukankan.com/home/tv" rel="noopener">看剧集</a>
+            </div>
+
+            <p class="meta-line">更新于 <time datetime="2026-08-06">2026年8月6日</time>，以本页为准。</p>
+        </section>
+
+        <section class="panel release-panel reveal" aria-labelledby="release-label">
+            <p class="panel-label" id="release-label">地址发布页</p>
+            <p>域名变更时，会在以下页面更新。请 Ctrl+D 收藏本页，避免通过搜索引擎的旧链接进入失效站点。</p>
+            <div class="release-url">
+                <a href="https://woniukankan.github.io">https://woniukankan.github.io</a>
+                <button type="button" class="btn btn-ghost btn-mini"
+                    data-copy="https://woniukankan.github.io">复制</button>
+            </div>
+            <div class="release-url">
+                <a href="https://rentry.org/woniukankan">https://rentry.org/woniukankan</a>
+                <button type="button" class="btn btn-ghost btn-mini"
+                    data-copy="https://rentry.org/woniukankan">复制</button>
+            </div>
+        </section>
+
+        <div class="ticker reveal" id="ticker" aria-label="正在热播">
+            <div class="ticker-tag">正在热播</div>
+            <div class="ticker-view">
+                <div class="ticker-track" id="ticker-track"></div>
+            </div>
+        </div>
+
+        <!-- 域名记录（暂时隐藏，有历史域名时取消注释即可恢复）
+        <section class="panel">
+            <p class="panel-label">域名记录</p>
+            <ul class="history">
+                <li><span class="tag tag-live">当前</span><span class="addr">woniukankan.com</span></li>
+            </ul>
+        </section>
+        -->
+
+        <!-- 手机观看 / 条款（暂时隐藏，需要时取消注释即可恢复）
+        <div class="extras">
+            <div class="extra-card">
+                <h3>手机观看</h3>
+                <p>手机浏览器直接打开主站即可播放，无需安装。</p>
+                <a class="btn btn-primary" href="https://woniukankan.com" rel="noopener">立即观看</a>
+            </div>
+            <div class="extra-card">
+                <h3>条款</h3>
+                <p>使用主站前请阅读隐私与版权声明。</p>
+                <a class="btn btn-ghost" href="https://woniukankan.com" rel="noopener">查看说明</a>
+            </div>
+        </div>
+        -->
+
+        <section class="panel game-panel reveal" aria-labelledby="game-label">
+            <p class="panel-label" id="game-label">🎰 今天看什么 · 随机抽片</p>
+            <div class="slot" id="slot">
+                <div class="slot-cat" id="slot-cat">点一下，随机推荐一部热播影片</div>
+                <div class="slot-title" id="slot-title" aria-live="polite">? ? ?</div>
+                <div class="actions game-actions">
+                    <button type="button" class="btn btn-primary" id="roll-btn">开始抽片</button>
+                    <a class="btn btn-ghost" id="watch-btn" href="https://woniukankan.com" rel="noopener"
+                        hidden>去主站观看</a>
+                </div>
+            </div>
+            <!-- <p class="meta-line" id="roll-tip">片名取自主站热播榜，抽中后可直接跳转观看。</p> -->
+        </section>
+
+        <section class="cats reveal" aria-labelledby="cats-title">
+            <div class="section-head">
+                <h2 id="cats-title">分类直达</h2>
+                <p class="hint">点击进入主站对应频道</p>
+            </div>
+            <div class="cat-grid">
+                <a href="https://woniukankan.com/home/movie" rel="noopener">
+                    <span class="name">电影</span>
+                    <span class="desc">院线大片 高清抢先</span>
+                </a>
+                <a href="https://woniukankan.com/home/tv" rel="noopener">
+                    <span class="name">电视剧</span>
+                    <span class="desc">热播剧集 极速更新</span>
+                </a>
+                <a href="https://woniukankan.com/home/cartoon" rel="noopener">
+                    <span class="name">动漫</span>
+                    <span class="desc">国漫日漫 每周追番</span>
+                </a>
+                <a href="https://woniukankan.com/home/variety" rel="noopener">
+                    <span class="name">综艺</span>
+                    <span class="desc">热门综艺 全集在线</span>
+                </a>
+                <a href="https://woniukankan.com/home/shortdrama" rel="noopener">
+                    <span class="name">短剧</span>
+                    <span class="desc">爽剧短剧 一口气看完</span>
+                </a>
+                <a href="https://woniukankan.com/home/sport" rel="noopener">
+                    <span class="name">体育</span>
+                    <span class="desc">赛事直播 精彩回放</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="reveal">
+            <div>© 蜗牛看看 · 免费高清 无广告</div>
+            <div class="links">
+                <a href="https://woniukankan.com" rel="noopener">主站首页</a>
+                <a href="https://woniukankan.com/search" rel="noopener">搜索</a>
+                <a href="https://woniukankan.github.io" rel="noopener">发布页</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * 热播片单 —— 跑马灯与抽片游戏共用。
+         *
+         * 运行时优先读同目录的 hot.json（由 GitHub Actions 每 6 小时抓主站首页生成，
+         * 见 scripts/fetch-hot.mjs）；抓取失败或本地直接打开文件时，回落到下面这份内置片单。
+         */
+        var FALLBACK_POOL = [
+            ['流浪地球2', '电影 · 科幻'],
+            ['长津湖', '电影 · 战争'],
+            ['唐人街探案3', '电影 · 喜剧'],
+            ['消失的她', '电影 · 悬疑'],
+            ['功夫', '电影 · 动作'],
+            ['寒战', '电影 · 动作'],
+            ['英雄', '电影 · 武侠'],
+            ['纵横四海', '电影 · 动作'],
+            ['飞驰人生3', '电影 · 喜剧'],
+            ['迷失东京', '电影 · 剧情'],
+            ['穿普拉达的女王2', '电影 · 剧情'],
+            ['真人快打2', '电影 · 动作'],
+            ['孤军突围', '电影 · 战争'],
+            ['熊出没·年年有熊', '电影 · 动画'],
+            ['给阿嬷的情书', '电影 · 剧情'],
+            ['九门2026', '电视剧 · 悬疑'],
+            ['悬案', '电视剧 · 犯罪'],
+            ['百花杀', '电视剧 · 古装'],
+            ['雀骨', '电视剧 · 古装'],
+            ['月鳞绮纪', '电视剧 · 古装'],
+            ['佳偶天成', '电视剧 · 爱情'],
+            ['白日提灯', '电视剧 · 剧情'],
+            ['黑夜告白', '电视剧 · 剧情'],
+            ['大时代2018', '电视剧 · 剧情'],
+            ['阿松与阿暖', '电视剧 · 家庭'],
+            ['凡人修仙传', '动漫 · 玄幻'],
+            ['完美世界', '动漫 · 玄幻'],
+            ['武神主宰', '动漫 · 热血'],
+            ['吞噬星空', '动漫 · 科幻'],
+            ['仙逆', '动漫 · 仙侠'],
+            ['遮天', '动漫 · 玄幻'],
+            ['太玄胎珠传', '动漫 · 仙侠'],
+            ['半熟恋人第五季', '综艺 · 恋综'],
+            ['这是我的西游2', '综艺 · 真人秀'],
+            ['开始推理吧第四季', '综艺 · 推理'],
+            ['我们的宿舍2', '综艺 · 真人秀'],
+            ['说唱巅峰对决2026', '综艺 · 音乐'],
+            ['爸爸当家第五季', '综艺 · 观察'],
+            ['极限挑战宝藏行', '综艺 · 户外'],
+            ['寿宴掀桌，隐忍四年我封神', '短剧 · 爽剧'],
+            ['她的蜜刃', '短剧 · 悬疑']
+        ];
+
+        function searchUrl(title) {
+            return 'https://woniukankan.com/search?keyword=' + encodeURIComponent(title);
+        }
+
+        /* 统一片单结构：{ title, cat, url }。内置片单没有详情页 id，只能退而跳搜索页。 */
+        var ITEMS = FALLBACK_POOL.map(function (x) {
+            return { title: x[0], cat: x[1], url: searchUrl(x[0]) };
+        });
+
+        /* 数据源更新后，各模块通过它重新渲染 */
+        var onItemsUpdated = [];
+
+        /* 复制地址（所有带 data-copy 的按钮通用） */
+        (function () {
+            var buttons = document.querySelectorAll('[data-copy]');
+
+            Array.prototype.forEach.call(buttons, function (btn) {
+                var url = btn.getAttribute('data-copy');
+                var label = btn.textContent;
+
+                function done(ok) {
+                    if (!ok) return;
+                    btn.textContent = '已复制 ✓';
+                    btn.classList.add('copied');
+                    setTimeout(function () {
+                        btn.textContent = label;
+                        btn.classList.remove('copied');
+                    }, 1800);
+                }
+
+                function fallback() {
+                    var ta = document.createElement('textarea');
+                    ta.value = url;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try {
+                        done(document.execCommand('copy'));
+                    } catch (e) {
+                        done(false);
+                    }
+                    document.body.removeChild(ta);
+                }
+
+                btn.addEventListener('click', function () {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(url).then(function () { done(true); }).catch(fallback);
+                    } else {
+                        fallback();
+                    }
+                });
+            });
+        })();
+
+        /* 热播跑马灯 */
+        (function () {
+            var track = document.getElementById('ticker-track');
+            var box = document.getElementById('ticker');
+
+            function render() {
+                var list = ITEMS.slice(0, 18);
+                track.innerHTML = '';
+
+                function fill() {
+                    list.forEach(function (item) {
+                        var a = document.createElement('a');
+                        a.href = item.url;
+                        a.rel = 'noopener';
+                        a.title = item.cat + ' · ' + item.title;
+                        a.style.color = 'inherit';
+                        a.style.textDecoration = 'none';
+                        var s = document.createElement('span');
+                        s.textContent = item.title;
+                        a.appendChild(s);
+                        track.appendChild(a);
+                    });
+                }
+
+                fill();
+                fill(); /* 复制一份，实现无缝循环 */
+                box.classList.add('ready');
+            }
+
+            render();
+            onItemsUpdated.push(render);
+        })();
+
+        /* 鼠标跟随光斑 */
+        (function () {
+            var hero = document.getElementById('hero');
+            hero.addEventListener('pointermove', function (e) {
+                var r = hero.getBoundingClientRect();
+                hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+            });
+            hero.addEventListener('pointerleave', function () {
+                hero.style.setProperty('--mx', '30%');
+                hero.style.setProperty('--my', '0%');
+            });
+        })();
+
+        /* 随机抽片小游戏 */
+        (function () {
+            var slot = document.getElementById('slot');
+            var elCat = document.getElementById('slot-cat');
+            var elTitle = document.getElementById('slot-title');
+            var btn = document.getElementById('roll-btn');
+            var watch = document.getElementById('watch-btn');
+            var tip = document.getElementById('roll-tip');
+
+            var rolling = false;
+            var count = 0;
+            var lastIndex = -1;
+
+            function pick() {
+                var i = Math.floor(Math.random() * ITEMS.length);
+                if (ITEMS.length > 1 && i === lastIndex) i = (i + 1) % ITEMS.length;
+                lastIndex = i;
+                return ITEMS[i];
+            }
+
+            function render(item) {
+                elTitle.textContent = item.title;
+                elCat.textContent = item.cat;
+            }
+
+            function burst() {
+                for (var i = 0; i < 12; i++) {
+                    var s = document.createElement('span');
+                    s.className = 'spark';
+                    var ang = Math.random() * Math.PI * 2;
+                    var dist = 40 + Math.random() * 70;
+                    s.style.left = (45 + Math.random() * 10) + '%';
+                    s.style.top = '42%';
+                    s.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+                    s.style.setProperty('--dy', Math.sin(ang) * dist + 'px');
+                    slot.appendChild(s);
+                    (function (node) {
+                        setTimeout(function () { node.remove(); }, 800);
+                    })(s);
+                }
+            }
+
+            function settle(item) {
+                rolling = false;
+                slot.classList.remove('rolling');
+                slot.classList.add('hit');
+                setTimeout(function () { slot.classList.remove('hit'); }, 450);
+
+                render(item);
+                burst();
+                watch.href = item.url;
+                watch.textContent = '去看《' + item.title + '》';
+                watch.hidden = false;
+                btn.textContent = '换一部';
+                btn.disabled = false;
+                count++;
+                if (tip) tip.textContent = '已为你抽了 ' + count + ' 部，不满意就再抽一次。';
+            }
+
+            function roll() {
+                if (rolling) return;
+                rolling = true;
+                btn.disabled = true;
+                watch.hidden = true;
+                slot.classList.add('rolling');
+
+                var delay = 55;
+                var elapsed = 0;
+
+                function step() {
+                    var item = pick();
+                    render(item);
+                    elapsed += delay;
+
+                    if (elapsed >= 1100 && delay > 160) {
+                        settle(item);
+                        return;
+                    }
+                    if (elapsed >= 700) delay = Math.round(delay * 1.28);
+                    setTimeout(step, delay);
+                }
+
+                step();
+            }
+
+            btn.addEventListener('click', roll);
+        })();
+
+        /* 滚动入场 */
+        (function () {
+            var items = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('in'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (en.isIntersecting) {
+                        en.target.classList.add('in');
+                        io.unobserve(en.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = (i * 70) + 'ms';
+                io.observe(el);
+            });
+        })();
+
+        /* 载入 hot.json（同源，由 GitHub Actions 定时从主站首页抓取生成） */
+        (function () {
+            if (!window.fetch) return;
+
+            fetch('./hot.json?t=' + Math.floor(Date.now() / 3600000), { cache: 'no-cache' })
+                .then(function (res) {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function (data) {
+                    var list = (data && data.items) || [];
+                    if (list.length < 5) throw new Error('片单为空');
+
+                    ITEMS.length = 0;
+                    list.forEach(function (it) {
+                        if (!it.title) return;
+                        ITEMS.push({
+                            title: it.title,
+                            cat: it.cat || '热播',
+                            url: it.path ? 'https://woniukankan.com' + it.path : searchUrl(it.title)
+                        });
+                    });
+
+                    onItemsUpdated.forEach(function (fn) { fn(); });
+                })
+                .catch(function () {
+                    /* 抓取失败就继续用内置片单，页面功能不受影响 */
+                });
+        })();
+    </script>
 </body>
+
 </html>
